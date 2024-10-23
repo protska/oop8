@@ -1,0 +1,167 @@
+﻿<Window x:Class="oop8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:oop8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0,0,0,49">
+                <WrapPanel Grid.Row="0">
+                    <TextBlock Text="ID" Width="100"/>
+                    <TextBlock Text="Name" Width="100"/>
+                    <TextBlock Text="Author" Width="100"/>
+                    <TextBlock Text="Picture" Width="100"/>
+                    <TextBlock Text="Description" Width="100"/>
+                </WrapPanel>
+                <WrapPanel Grid.Column="0"
+                           Grid.Row="0"
+                           Orientation="Horizontal">
+                    <TextBox x:Name="textBoxID"
+                         Height="30"
+                         Width="100" TextChanged="textBoxID_TextChanged"/>
+                    <TextBox x:Name="textBoxName"
+                         Height="30"
+                         Width="100" TextChanged="textBoxName_TextChanged"/>
+                    <ComboBox x:Name="comboBoxAuthors"
+                          Height="30"
+                          Width="100"
+                          Loaded="ComboBox_Loaded" SelectionChanged="comboBoxAuthors_SelectionChanged"/>
+                    <TextBox x:Name="textBoxPath"
+                         Height="30"
+                         Width="100" TextChanged="textBoxPath_TextChanged"/>
+                    <TextBox x:Name="textBoxDescription"
+                         Height="30"
+                         Width="100" TextChanged="textBoxDescription_TextChanged"/>
+                </WrapPanel>
+                <WrapPanel Grid.Row="1">
+                    <TextBlock Text="ID" Width="100"/>
+                    <TextBlock Text="Name" Width="100"/>
+                    <TextBlock Text="Surname" Width="100"/>
+                    <TextBlock Text="Biography" Width="100"/>
+                </WrapPanel>
+                <WrapPanel Grid.Column="0"
+                           Grid.Row="1"
+                           Orientation="Horizontal">
+                    <TextBox x:Name="textBoxAuthorID"
+                         Height="30"
+                         Width="100" TextChanged="textBoxID_TextChanged"/>
+                    <TextBox x:Name="textBoxAuthorName"
+                         Height="30"
+                         Width="100" TextChanged="textBoxAuthorName_TextChanged"/>
+                    <TextBox x:Name="textBoxSurname"
+                         Height="30"
+                         Width="100" TextChanged="textBoxSurname_TextChanged"/>
+                    <TextBox x:Name="textBoxBiography"
+                         Height="30"
+                         Width="100" TextChanged="textBoxBiography_TextChanged"/>
+                </WrapPanel>
+            </StackPanel>
+            <Label Foreground="DarkRed" Grid.Row="3" Content="DataGrid только для просмотра данных. Все действия только через текстовые поля."></Label>
+            <DataGrid x:Name="dataGrid" 
+                      Grid.RowSpan="1" 
+                      IsReadOnly="True"
+                      SelectionChanged="dataGrid_SelectionChanged"
+                      Grid.Row="1"/>
+            <DataGrid x:Name="dataGridAuthors" 
+                      IsReadOnly="True"
+                      Grid.RowSpan="1" 
+                      SelectionChanged="dataGridAuthors_SelectionChanged"
+                      Grid.Row="2"/>
+            <Button x:Name="clearALl" 
+                    Content="Clear"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Height="50" 
+                    Width="200" 
+                    Margin="64,20,64,80" Click="clearALl_Click"/>
+            <Button x:Name="showAll" 
+                    Content="Show all books"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Height="50" 
+                    Width="200" 
+                    Margin="63,11,65,89" Click="showAll_Click"/>
+            <Button x:Name="deleteBook" 
+                    Content="Delete book"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Height="50" 
+                    Margin="10,75,181,25" Click="deleteBook_Click"/>
+            <Button x:Name="updateBook" 
+                    Content="Update book"
+                    Grid.Column="1"
+                    Height="50" 
+                    Margin="10,90,181,10" Click="updateBook_Click"/>
+            <Button x:Name="sortBooksAsc" 
+                    Content="asc"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Height="50" 
+                    Margin="64,84,179,16" Click="sortBooks_Click"/>
+            <Button x:Name="sortBooksDesc" 
+                Content="desc"
+                Grid.Column="1"
+                Grid.Row="2"
+                Height="50" 
+                Margin="179,84,65,16" Click="sortBooks_Click"/>
+            <Button x:Name="backButton" 
+                Content="back"
+                Grid.Column="1"
+                Grid.Row="3"
+                Height="50" 
+                Margin="63,45,181,55" 
+                IsEnabled="False"    
+                Click="backButton_Click"/>
+            <Button x:Name="furtherButton" 
+                Content="further"
+                Grid.Column="1"
+                Grid.Row="3"
+                Height="50" 
+                Margin="179,45,65,55"
+                IsEnabled="False"  
+                Click="furtherButton_Click"/>
+            <Button x:Name="addBook" 
+                    Content="Add book" 
+                    Margin="532,10,267,100" 
+                    IsEnabled="False"  
+                    Click="addBook_Click" Grid.ColumnSpan="2"/>
+            <Button x:Name="addAuthor" 
+                Content="Add author" 
+                Margin="471,55,0,55" 
+                IsEnabled="False"  
+                Click="addAuthor_Click"/>
+            <Button x:Name="updateAuthor" 
+                Content="Update author"
+                Grid.Column="1"
+                Height="50" 
+                Margin="164,90,27,10" Click="updateAuthor_Click"/>
+            <Button x:Name="deleteAuuthor" 
+                Content="Delete author"
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="50" 
+                Margin="164,75,27,25" Click="deleteAuuthor_Click"/>
+            <Button x:Name="show2" 
+                    Content="Show BooksID>2"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Height="50" 
+                    Width="200" 
+                    Margin="375,30,65,89" Click="showBook2_Click"/>
+        </Grid>
+    </ScrollViewer>
+</Window>
